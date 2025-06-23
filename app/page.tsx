@@ -38,12 +38,16 @@ export default function LukusKnivesLanding() {
             sharpening. Bringing your blades back to perfection.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3">
-              <Mail className="mr-2 h-5 w-5" />
-              Get Quote
+            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3" asChild>
+              <Link href="mailto:info@codechefs.ch">
+                <Mail className="mr-2 h-5 w-5" />
+                Get Quote
+              </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3">
-              View Our Work
+            <Button variant="outline" size="lg" className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3" asChild>
+              <Link href="#gallery">
+                View Our Work
+              </Link>
             </Button>
           </div>
         </div>
@@ -112,7 +116,7 @@ export default function LukusKnivesLanding() {
       </section>
 
       {/* Knife Gallery */}
-      <section className="py-16 px-4">
+      <section id="gallery" className="py-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-slate-900 mb-4">Premium Blade Specialists</h3>
