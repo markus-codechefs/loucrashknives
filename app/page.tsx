@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Mail, MapPin, Scissors, Sparkles, RefreshCw, Star } from "lucide-react"
+import { Mail, MapPin, Scissors, Sparkles, RefreshCw, Star, Swords } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
@@ -82,7 +82,7 @@ export default function LukusKnivesLanding() {
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Scissors className="h-8 w-8 text-slate-800" />
+            <Swords className="h-8 w-8 text-slate-800" />
             <h1 className="text-2xl font-bold text-slate-800">{t[lang].title}</h1>
           </div>
           <div className="flex items-center space-x-2 text-sm text-slate-600">
@@ -373,7 +373,7 @@ export default function LukusKnivesLanding() {
       <footer className="bg-slate-800 text-slate-300 py-8 px-4">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Scissors className="h-6 w-6" />
+            <Swords className="h-6 w-6" />
             <span className="text-xl font-bold text-white">{t[lang].footerTitle}</span>
           </div>
           <p className="text-sm">{t[lang].footerDesc}</p>
