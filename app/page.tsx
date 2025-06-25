@@ -335,32 +335,7 @@ export default function LukusKnivesLanding() {
           <h3 className="text-4xl font-bold mb-6">{t[lang].contactTitle}</h3>
           <p className="text-xl text-slate-300 mb-8">{t[lang].contactDesc}</p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <div className="flex items-center space-x-3">
-              <Mail className="h-6 w-6 text-slate-300" />
-              <div className="text-left">
-                <div className="text-sm text-slate-400">{t[lang].emailUs}</div>
-                <Link
-                  href="mailto:info@codechefs.ch"
-                  className="text-xl font-semibold hover:text-slate-300 transition-colors"
-                >
-                  info@codechefs.ch
-                </Link>
-              </div>
-            </div>
-
-            <Separator orientation="vertical" className="h-12 bg-slate-700 hidden sm:block" />
-
-            <div className="flex items-center space-x-3">
-              <MapPin className="h-6 w-6 text-slate-300" />
-              <div className="text-left">
-                <div className="text-sm text-slate-400">{t[lang].locatedIn}</div>
-                <div className="text-xl font-semibold">{t[lang].location}</div>
-              </div>
-            </div>
-          </div>
-
-          <Button size="lg" className="mt-8 bg-white text-slate-900 hover:bg-slate-100 px-8 py-3" asChild>
+          <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-3" asChild>
             <Link href="mailto:info@codechefs.ch">
               <Mail className="mr-2 h-5 w-5" />
               {t[lang].sendInquiry}
