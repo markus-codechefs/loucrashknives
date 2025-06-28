@@ -134,15 +134,10 @@ export default function LukusKnivesLanding() {
             {t[lang].heroDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-3" asChild>
+            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-10 py-4 text-lg font-semibold" asChild>
               <Link href="mailto:info@codechefs.ch">
-                <Mail className="mr-2 h-5 w-5" aria-hidden="true" />
+                <Mail className="mr-3 h-6 w-6" aria-hidden="true" />
                 {t[lang].getQuote}
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-3" asChild>
-              <Link href="#gallery">
-                {t[lang].viewWork}
               </Link>
             </Button>
           </div>
