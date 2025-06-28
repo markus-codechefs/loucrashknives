@@ -80,23 +80,30 @@ export default function LukusKnivesLanding() {
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50" role="banner">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Swords className="h-8 w-8 text-slate-800" aria-hidden="true" />
-            <h1 className="text-2xl font-bold text-slate-800">{t[lang].title}</h1>
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between gap-2">
+          <div className="flex items-center space-x-2 min-w-0 flex-1">
+            <Swords className="h-8 w-8 text-slate-800 flex-shrink-0" aria-hidden="true" />
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-800 truncate">{t[lang].title}</h1>
           </div>
-          <div className="flex items-center space-x-2 text-sm text-slate-600">
+          <div className="hidden sm:flex items-center space-x-2 text-sm text-slate-600 flex-shrink-0">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             <span>{t[lang].location}</span>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 flex-shrink-0">
             <button
-              className="text-xs border rounded px-2 py-1 hover:bg-slate-100"
+              className="text-xs border rounded px-2 py-1 hover:bg-slate-100 bg-white shadow-sm"
               onClick={() => setLang(lang === 'de' ? 'en' : 'de')}
               aria-label={lang === 'de' ? 'Switch to English' : 'Wechseln Sie zu Deutsch'}
             >
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
+          </div>
+        </div>
+        {/* Mobile location display */}
+        <div className="sm:hidden px-4 pb-2">
+          <div className="flex items-center space-x-2 text-sm text-slate-600">
+            <MapPin className="h-4 w-4" aria-hidden="true" />
+            <span>{t[lang].location}</span>
           </div>
         </div>
       </header>
