@@ -11,6 +11,13 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			// LouCrash Knives Brand Colors
+  			'steel-gray': '#4A4A4A',
+  			'sharp-blue': '#007BBD',
+  			'light-silver': '#F2F2F2',
+  			'rust-brown': '#8B4000',
+  			'honed-white': '#FFFFFF',
+  			// Existing shadcn/ui colors
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
