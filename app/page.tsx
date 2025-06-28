@@ -77,22 +77,23 @@ export default function LukusKnivesLanding() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50" role="banner">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Swords className="h-8 w-8 text-slate-800" />
+            <Swords className="h-8 w-8 text-slate-800" aria-hidden="true" />
             <h1 className="text-2xl font-bold text-slate-800">{t[lang].title}</h1>
           </div>
           <div className="flex items-center space-x-2 text-sm text-slate-600">
-            <MapPin className="h-4 w-4" />
+            <MapPin className="h-4 w-4" aria-hidden="true" />
             <span>{t[lang].location}</span>
           </div>
           <div className="flex items-center space-x-2">
             <button
               className="text-xs border rounded px-2 py-1 hover:bg-slate-100"
               onClick={() => setLang(lang === 'de' ? 'en' : 'de')}
+              aria-label={lang === 'de' ? 'Switch to English' : 'Wechseln Sie zu Deutsch'}
             >
               {lang === 'de' ? 'EN' : 'DE'}
             </button>
@@ -101,26 +102,38 @@ export default function LukusKnivesLanding() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto text-center max-w-4xl">
-          <Badge variant="outline" className="mb-6 text-slate-700 border-slate-300">
+      <section className="relative py-20 px-4 overflow-hidden" role="banner" aria-labelledby="hero-title">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero-knife.jpg"
+            alt="Premium knife background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        <div className="container mx-auto text-center max-w-4xl relative z-10">
+          <Badge variant="outline" className="mb-6 text-white border-white/30 bg-white/10 backdrop-blur-sm">
             {t[lang].badge}
           </Badge>
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+          <h2 id="hero-title" className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             {t[lang].heroTitle1}
-            <span className="text-slate-600 block">{t[lang].heroTitle2}</span>
+            <span className="text-slate-200 block">{t[lang].heroTitle2}</span>
           </h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-slate-200 mb-8 max-w-2xl mx-auto leading-relaxed">
             {t[lang].heroDesc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3" asChild>
+            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-3" asChild>
               <Link href="mailto:info@codechefs.ch">
-                <Mail className="mr-2 h-5 w-5" />
+                <Mail className="mr-2 h-5 w-5" aria-hidden="true" />
                 {t[lang].getQuote}
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-slate-300 text-slate-700 hover:bg-slate-50 px-8 py-3" asChild>
+            <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-3" asChild>
               <Link href="#gallery">
                 {t[lang].viewWork}
               </Link>
@@ -130,17 +143,17 @@ export default function LukusKnivesLanding() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-16 px-4 bg-slate-50" role="region" aria-labelledby="services-title">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">{t[lang].servicesTitle}</h3>
+            <h3 id="services-title" className="text-3xl font-bold text-slate-900 mb-4">{t[lang].servicesTitle}</h3>
             <p className="text-slate-600 max-w-2xl mx-auto">{t[lang].servicesDesc}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-slate-200 hover:shadow-lg transition-shadow">
+            <article className="card border-slate-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
-                <RefreshCw className="h-12 w-12 text-slate-700 mx-auto mb-4" />
+                <RefreshCw className="h-12 w-12 text-slate-700 mx-auto mb-4" aria-hidden="true" />
                 <CardTitle className="text-slate-900">{t[lang].restoration}</CardTitle>
                 <CardDescription>{t[lang].restorationDesc}</CardDescription>
               </CardHeader>
@@ -149,11 +162,11 @@ export default function LukusKnivesLanding() {
                   {t[lang].restorationList.map((item, i) => <li key={i}>{item}</li>)}
                 </ul>
               </CardContent>
-            </Card>
+            </article>
 
-            <Card className="border-slate-200 hover:shadow-lg transition-shadow">
+            <article className="card border-slate-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
-                <Sparkles className="h-12 w-12 text-slate-700 mx-auto mb-4" />
+                <Sparkles className="h-12 w-12 text-slate-700 mx-auto mb-4" aria-hidden="true" />
                 <CardTitle className="text-slate-900">{t[lang].cleaning}</CardTitle>
                 <CardDescription>{t[lang].cleaningDesc}</CardDescription>
               </CardHeader>
@@ -162,11 +175,11 @@ export default function LukusKnivesLanding() {
                   {t[lang].cleaningList.map((item, i) => <li key={i}>{item}</li>)}
                 </ul>
               </CardContent>
-            </Card>
+            </article>
 
-            <Card className="border-slate-200 hover:shadow-lg transition-shadow">
+            <article className="card border-slate-200 hover:shadow-lg transition-shadow">
               <CardHeader className="text-center">
-                <Scissors className="h-12 w-12 text-slate-700 mx-auto mb-4" />
+                <Scissors className="h-12 w-12 text-slate-700 mx-auto mb-4" aria-hidden="true" />
                 <CardTitle className="text-slate-900">{t[lang].sharpening}</CardTitle>
                 <CardDescription>{t[lang].sharpeningDesc}</CardDescription>
               </CardHeader>
@@ -175,169 +188,169 @@ export default function LukusKnivesLanding() {
                   {t[lang].sharpeningList.map((item, i) => <li key={i}>{item}</li>)}
                 </ul>
               </CardContent>
-            </Card>
+            </article>
           </div>
         </div>
       </section>
 
       {/* Knife Gallery */}
-      <section id="gallery" className="py-16 px-4">
+      <section id="gallery" className="py-16 px-4" role="region" aria-labelledby="gallery-title">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">{t[lang].galleryTitle}</h3>
+            <h3 id="gallery-title" className="text-3xl font-bold text-slate-900 mb-4">{t[lang].galleryTitle}</h3>
             <p className="text-slate-600 max-w-2xl mx-auto">{t[lang].galleryDesc}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife1.jpg"
                 alt="Damascus chef knife with intricate folded steel pattern"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">Damascus Chef Knife</h4>
                   <p className="text-sm opacity-90">Folded steel restoration</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife2.jpg"
                 alt="Japanese santoku knife with premium steel finish"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">Japanese Santoku</h4>
                   <p className="text-sm opacity-90">Precision sharpening</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife3.jpg"
                 alt="High-end German knife with custom handle"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">German Steel Blade</h4>
                   <p className="text-sm opacity-90">Complete restoration</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife4.jpg"
                 alt="Vintage Damascus hunting knife with bone handle"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">Vintage Damascus</h4>
                   <p className="text-sm opacity-90">Pattern restoration</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife5.jpg"
                 alt="Professional chef knife set with mirror finish"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">Professional Set</h4>
                   <p className="text-sm opacity-90">Mirror polish finish</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
 
-            <div className="relative group overflow-hidden rounded-lg">
+            <figure className="relative group overflow-hidden rounded-lg">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="/knife6.jpg"
                 alt="Custom forged Damascus blade with unique pattern"
                 width={400}
                 height={300}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+              <figcaption className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute bottom-4 left-4 text-white">
                   <h4 className="font-semibold">Custom Damascus</h4>
                   <p className="text-sm opacity-90">Unique pattern work</p>
                 </div>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 px-4 bg-slate-50">
+      <section className="py-16 px-4 bg-slate-50" role="region" aria-labelledby="testimonials-title">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-slate-900 mb-4">What Our Clients Say</h3>
+            <h3 id="testimonials-title" className="text-3xl font-bold text-slate-900 mb-4">What Our Clients Say</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="border-slate-200">
+            <blockquote className="card border-slate-200">
               <CardContent className="pt-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                   ))}
                 </div>
                 <p className="text-slate-600 mb-4">
                   "Incredible work on my Damascus chef knife. The pattern restoration was flawless, and the edge is
                   sharper than when I first bought it."
                 </p>
-                <div className="font-semibold text-slate-900">— Chef Marcus, Bern</div>
+                <cite className="font-semibold text-slate-900">— Chef Marcus, Bern</cite>
               </CardContent>
-            </Card>
+            </blockquote>
 
-            <Card className="border-slate-200">
+            <blockquote className="card border-slate-200">
               <CardContent className="pt-6">
                 <div className="flex mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" aria-hidden="true" />
                   ))}
                 </div>
                 <p className="text-slate-600 mb-4">
                   "Professional service and attention to detail. My vintage knife collection has never looked better.
                   Highly recommended!"
                 </p>
-                <div className="font-semibold text-slate-900">— Andreas K., Interlaken</div>
+                <cite className="font-semibold text-slate-900">— Andreas K., Interlaken</cite>
               </CardContent>
-            </Card>
+            </blockquote>
           </div>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 px-4 bg-slate-900 text-white">
+      <section className="py-20 px-4 bg-slate-900 text-white" role="region" aria-labelledby="contact-title">
         <div className="container mx-auto text-center max-w-3xl">
-          <h3 className="text-4xl font-bold mb-6">{t[lang].contactTitle}</h3>
+          <h3 id="contact-title" className="text-4xl font-bold mb-6">{t[lang].contactTitle}</h3>
           <p className="text-xl text-slate-300 mb-8">{t[lang].contactDesc}</p>
 
           <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-100 px-8 py-3" asChild>
             <Link href="mailto:info@codechefs.ch">
-              <Mail className="mr-2 h-5 w-5" />
+              <Mail className="mr-2 h-5 w-5" aria-hidden="true" />
               {t[lang].sendInquiry}
             </Link>
           </Button>
@@ -345,16 +358,16 @@ export default function LukusKnivesLanding() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-slate-300 py-8 px-4">
+      <footer className="bg-slate-800 text-slate-300 py-8 px-4" role="contentinfo">
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Swords className="h-6 w-6" />
+            <Swords className="h-6 w-6" aria-hidden="true" />
             <span className="text-xl font-bold text-white">{t[lang].footerTitle}</span>
           </div>
           <p className="text-sm">{t[lang].footerDesc}</p>
           <p className="text-xs text-slate-400 mt-2">{t[lang].copyright()}</p>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }
